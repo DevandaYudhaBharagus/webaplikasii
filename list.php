@@ -23,16 +23,16 @@ $show_pagination = $this->show_pagination;
         <div class="container-fluid">
             <div class="row ">
                 <div class="col ">
-                    <h4 class="record-title">Kriteria</h4>
+                    <h4 class="record-title">Menu</h4>
                 </div>
                 <div class="col-sm-3 ">
-                    <a  class="btn btn btn-primary my-1" href="<?php print_link("kriteria/add") ?>">
+                    <a  class="btn btn btn-primary my-1" href="<?php print_link("menu/add") ?>">
                         <i class="fa fa-plus"></i>                              
-                        Add New Kriteria 
+                        Add New Menu 
                     </a>
                 </div>
                 <div class="col-sm-4 ">
-                    <form  class="search" action="<?php print_link('kriteria'); ?>" method="get">
+                    <form  class="search" action="<?php print_link('menu'); ?>" method="get">
                         <div class="input-group">
                             <input value="<?php echo get_value('search'); ?>" class="form-control" type="text" name="search"  placeholder="Search" />
                                 <div class="input-group-append">
@@ -54,7 +54,7 @@ $show_pagination = $this->show_pagination;
                                     if(!empty($field_name)){
                                     ?>
                                     <li class="breadcrumb-item">
-                                        <a class="text-decoration-none" href="<?php print_link('kriteria'); ?>">
+                                        <a class="text-decoration-none" href="<?php print_link('menu'); ?>">
                                             <i class="fa fa-angle-left"></i>
                                         </a>
                                     </li>
@@ -71,7 +71,7 @@ $show_pagination = $this->show_pagination;
                                     if(get_value("search")){
                                     ?>
                                     <li class="breadcrumb-item">
-                                        <a class="text-decoration-none" href="<?php print_link('kriteria'); ?>">
+                                        <a class="text-decoration-none" href="<?php print_link('menu'); ?>">
                                             <i class="fa fa-angle-left"></i>
                                         </a>
                                     </li>
@@ -102,7 +102,7 @@ $show_pagination = $this->show_pagination;
                     <div class="col-md-12 comp-grid">
                         <?php $this :: display_page_errors(); ?>
                         <div  class=" animated fadeIn page-content">
-                            <div id="kriteria-list-records">
+                            <div id="menu-list-records">
                                 <div id="page-report-body" class="table-responsive">
                                     <table class="table  table-striped table-sm text-left">
                                         <thead class="table-header bg-light">
@@ -114,8 +114,11 @@ $show_pagination = $this->show_pagination;
                                                     </label>
                                                 </th>
                                                 <th class="td-sno">#</th>
-                                                <th  class="td-id"> Id</th>
-                                                <th  class="td-sub_kriteria"> Sub Kriteria</th>
+                                                <th  class="td-no"> No</th>
+                                                <th  class="td-kriteria"> Kriteria</th>
+                                                <th  class="td-status"> Status</th>
+                                                <th  class="td-bobot"> Bobot</th>
+                                                <th  class="td-keterangan"> Keterangan</th>
                                                 <th class="td-btn"></th>
                                             </tr>
                                         </thead>
@@ -127,41 +130,100 @@ $show_pagination = $this->show_pagination;
                                             <?php
                                             $counter = 0;
                                             foreach($records as $data){
-                                            $rec_id = (!empty($data['id']) ? urlencode($data['id']) : null);
+                                            $rec_id = (!empty($data['no']) ? urlencode($data['no']) : null);
                                             $counter++;
                                             ?>
                                             <tr>
                                                 <th class=" td-checkbox">
                                                     <label class="custom-control custom-checkbox custom-control-inline">
-                                                        <input class="optioncheck custom-control-input" name="optioncheck[]" value="<?php echo $data['id'] ?>" type="checkbox" />
+                                                        <input class="optioncheck custom-control-input" name="optioncheck[]" value="<?php echo $data['no'] ?>" type="checkbox" />
                                                             <span class="custom-control-label"></span>
                                                         </label>
                                                     </th>
                                                     <th class="td-sno"><?php echo $counter; ?></th>
-                                                    <td class="td-id"><a href="<?php print_link("kriteria/view/$data[id]") ?>"><?php echo $data['id']; ?></a></td>
-                                                    <td class="td-sub_kriteria">
-                                                        <span  data-value="<?php echo $data['sub_kriteria']; ?>" 
-                                                            data-pk="<?php echo $data['id'] ?>" 
-                                                            data-url="<?php print_link("kriteria/editfield/" . urlencode($data['id'])); ?>" 
-                                                            data-name="sub_kriteria" 
-                                                            data-title="Enter Sub Kriteria" 
+                                                    <td class="td-no">
+                                                        <span  data-value="<?php echo $data['no']; ?>" 
+                                                            data-pk="<?php echo $data['no'] ?>" 
+                                                            data-url="<?php print_link("menu/editfield/" . urlencode($data['no'])); ?>" 
+                                                            data-name="no" 
+                                                            data-title="Enter No" 
+                                                            data-placement="left" 
+                                                            data-toggle="click" 
+                                                            data-type="number" 
+                                                            data-mode="popover" 
+                                                            data-showbuttons="left" 
+                                                            class="is-editable" >
+                                                            <?php echo $data['no']; ?> 
+                                                        </span>
+                                                    </td>
+                                                    <td class="td-kriteria">
+                                                        <span  data-value="<?php echo $data['kriteria']; ?>" 
+                                                            data-pk="<?php echo $data['no'] ?>" 
+                                                            data-url="<?php print_link("menu/editfield/" . urlencode($data['no'])); ?>" 
+                                                            data-name="kriteria" 
+                                                            data-title="Enter Kriteria" 
                                                             data-placement="left" 
                                                             data-toggle="click" 
                                                             data-type="text" 
                                                             data-mode="popover" 
                                                             data-showbuttons="left" 
                                                             class="is-editable" >
-                                                            <?php echo $data['sub_kriteria']; ?> 
+                                                            <?php echo $data['kriteria']; ?> 
+                                                        </span>
+                                                    </td>
+                                                    <td class="td-status">
+                                                        <span  data-value="<?php echo $data['status']; ?>" 
+                                                            data-pk="<?php echo $data['no'] ?>" 
+                                                            data-url="<?php print_link("menu/editfield/" . urlencode($data['no'])); ?>" 
+                                                            data-name="status" 
+                                                            data-title="Enter Status" 
+                                                            data-placement="left" 
+                                                            data-toggle="click" 
+                                                            data-type="text" 
+                                                            data-mode="popover" 
+                                                            data-showbuttons="left" 
+                                                            class="is-editable" >
+                                                            <?php echo $data['status']; ?> 
+                                                        </span>
+                                                    </td>
+                                                    <td class="td-bobot">
+                                                        <span  data-value="<?php echo $data['bobot']; ?>" 
+                                                            data-pk="<?php echo $data['no'] ?>" 
+                                                            data-url="<?php print_link("menu/editfield/" . urlencode($data['no'])); ?>" 
+                                                            data-name="bobot" 
+                                                            data-title="Enter Bobot" 
+                                                            data-placement="left" 
+                                                            data-toggle="click" 
+                                                            data-type="text" 
+                                                            data-mode="popover" 
+                                                            data-showbuttons="left" 
+                                                            class="is-editable" >
+                                                            <?php echo $data['bobot']; ?> 
+                                                        </span>
+                                                    </td>
+                                                    <td class="td-keterangan">
+                                                        <span  data-value="<?php echo $data['keterangan']; ?>" 
+                                                            data-pk="<?php echo $data['no'] ?>" 
+                                                            data-url="<?php print_link("menu/editfield/" . urlencode($data['no'])); ?>" 
+                                                            data-name="keterangan" 
+                                                            data-title="Enter Keterangan" 
+                                                            data-placement="left" 
+                                                            data-toggle="click" 
+                                                            data-type="text" 
+                                                            data-mode="popover" 
+                                                            data-showbuttons="left" 
+                                                            class="is-editable" >
+                                                            <?php echo $data['keterangan']; ?> 
                                                         </span>
                                                     </td>
                                                     <th class="td-btn">
-                                                        <a class="btn btn-sm btn-success has-tooltip" title="View Record" href="<?php print_link("kriteria/view/$rec_id"); ?>">
+                                                        <a class="btn btn-sm btn-success has-tooltip" title="View Record" href="<?php print_link("menu/view/$rec_id"); ?>">
                                                             <i class="fa fa-eye"></i> View
                                                         </a>
-                                                        <a class="btn btn-sm btn-info has-tooltip" title="Edit This Record" href="<?php print_link("kriteria/edit/$rec_id"); ?>">
+                                                        <a class="btn btn-sm btn-info has-tooltip" title="Edit This Record" href="<?php print_link("menu/edit/$rec_id"); ?>">
                                                             <i class="fa fa-edit"></i> Edit
                                                         </a>
-                                                        <a class="btn btn-sm btn-danger has-tooltip record-delete-btn" title="Delete this record" href="<?php print_link("kriteria/delete/$rec_id/?csrf_token=$csrf_token&redirect=$current_page"); ?>" data-prompt-msg="Are you sure you want to delete this record?" data-display-style="modal">
+                                                        <a class="btn btn-sm btn-danger has-tooltip record-delete-btn" title="Delete this record" href="<?php print_link("menu/delete/$rec_id/?csrf_token=$csrf_token&redirect=$current_page"); ?>" data-prompt-msg="Are you sure you want to delete this record?" data-display-style="modal">
                                                             <i class="fa fa-times"></i>
                                                             Delete
                                                         </a>
@@ -194,7 +256,7 @@ $show_pagination = $this->show_pagination;
                                         <div class="row justify-content-center">    
                                             <div class="col-md-auto justify-content-center">    
                                                 <div class="p-3 d-flex justify-content-between">    
-                                                    <button data-prompt-msg="Are you sure you want to delete these records?" data-display-style="modal" data-url="<?php print_link("kriteria/delete/{sel_ids}/?csrf_token=$csrf_token&redirect=$current_page"); ?>" class="btn btn-sm btn-danger btn-delete-selected d-none">
+                                                    <button data-prompt-msg="Are you sure you want to delete these records?" data-display-style="modal" data-url="<?php print_link("menu/delete/{sel_ids}/?csrf_token=$csrf_token&redirect=$current_page"); ?>" class="btn btn-sm btn-danger btn-delete-selected d-none">
                                                         <i class="fa fa-times"></i> Delete Selected
                                                     </button>
                                                     <div class="dropup export-btn-holder mx-1">
