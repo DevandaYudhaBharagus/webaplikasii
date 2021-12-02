@@ -1,1 +1,1 @@
-Harap membuat folder terlebih dahulu
+HARAP MEMBUAT FOLDER TERLEBIH DAHULU
