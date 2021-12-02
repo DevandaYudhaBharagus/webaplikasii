@@ -21,7 +21,7 @@ $show_export_btn = $this->show_export_btn;
         <div class="container">
             <div class="row ">
                 <div class="col ">
-                    <h4 class="record-title">View  Sub Kriteria</h4>
+                    <h4 class="record-title">View  Tambah Data</h4>
                 </div>
             </div>
         </div>
@@ -49,39 +49,57 @@ $show_export_btn = $this->show_export_btn;
                                         <th class="title"> No: </th>
                                         <td class="value"> <?php echo $data['no']; ?></td>
                                     </tr>
-                                    <tr  class="td-subkriteria">
-                                        <th class="title"> Subkriteria: </th>
+                                    <tr  class="td-no_kk">
+                                        <th class="title"> No Kk: </th>
                                         <td class="value">
-                                            <span  data-value="<?php echo $data['subkriteria']; ?>" 
+                                            <span  data-value="<?php echo $data['no_kk']; ?>" 
                                                 data-pk="<?php echo $data['no'] ?>" 
-                                                data-url="<?php print_link("sub_kriteria/editfield/" . urlencode($data['no'])); ?>" 
-                                                data-name="subkriteria" 
-                                                data-title="Enter Subkriteria" 
+                                                data-url="<?php print_link("tambah_data/editfield/" . urlencode($data['no'])); ?>" 
+                                                data-name="no_kk" 
+                                                data-title="Enter No Kk" 
                                                 data-placement="left" 
                                                 data-toggle="click" 
                                                 data-type="text" 
                                                 data-mode="popover" 
                                                 data-showbuttons="left" 
                                                 class="is-editable" >
-                                                <?php echo $data['subkriteria']; ?> 
+                                                <?php echo $data['no_kk']; ?> 
                                             </span>
                                         </td>
                                     </tr>
-                                    <tr  class="td-nilai">
-                                        <th class="title"> Nilai: </th>
+                                    <tr  class="td-nama">
+                                        <th class="title"> Nama: </th>
                                         <td class="value">
-                                            <span  data-value="<?php echo $data['nilai']; ?>" 
+                                            <span  data-value="<?php echo $data['nama']; ?>" 
                                                 data-pk="<?php echo $data['no'] ?>" 
-                                                data-url="<?php print_link("sub_kriteria/editfield/" . urlencode($data['no'])); ?>" 
-                                                data-name="nilai" 
-                                                data-title="Enter Nilai" 
+                                                data-url="<?php print_link("tambah_data/editfield/" . urlencode($data['no'])); ?>" 
+                                                data-name="nama" 
+                                                data-title="Enter Nama" 
                                                 data-placement="left" 
                                                 data-toggle="click" 
                                                 data-type="text" 
                                                 data-mode="popover" 
                                                 data-showbuttons="left" 
                                                 class="is-editable" >
-                                                <?php echo $data['nilai']; ?> 
+                                                <?php echo $data['nama']; ?> 
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr  class="td-total_nilai">
+                                        <th class="title"> Total Nilai: </th>
+                                        <td class="value">
+                                            <span  data-value="<?php echo $data['total_nilai']; ?>" 
+                                                data-pk="<?php echo $data['no'] ?>" 
+                                                data-url="<?php print_link("tambah_data/editfield/" . urlencode($data['no'])); ?>" 
+                                                data-name="total_nilai" 
+                                                data-title="Enter Total Nilai" 
+                                                data-placement="left" 
+                                                data-toggle="click" 
+                                                data-type="text" 
+                                                data-mode="popover" 
+                                                data-showbuttons="left" 
+                                                class="is-editable" >
+                                                <?php echo $data['total_nilai']; ?> 
                                             </span>
                                         </td>
                                     </tr>
@@ -117,10 +135,10 @@ $show_export_btn = $this->show_export_btn;
                                                         </a>
                                                     </div>
                                                 </div>
-                                                <a class="btn btn-sm btn-info"  href="<?php print_link("sub_kriteria/edit/$rec_id"); ?>">
+                                                <a class="btn btn-sm btn-info"  href="<?php print_link("tambah_data/edit/$rec_id"); ?>">
                                                     <i class="fa fa-edit"></i> Edit
                                                 </a>
-                                                <a class="btn btn-sm btn-danger record-delete-btn mx-1"  href="<?php print_link("sub_kriteria/delete/$rec_id/?csrf_token=$csrf_token&redirect=$current_page"); ?>" data-prompt-msg="Are you sure you want to delete this record?" data-display-style="modal">
+                                                <a class="btn btn-sm btn-danger record-delete-btn mx-1"  href="<?php print_link("tambah_data/delete/$rec_id/?csrf_token=$csrf_token&redirect=$current_page"); ?>" data-prompt-msg="Are you sure you want to delete this record?" data-display-style="modal">
                                                     <i class="fa fa-times"></i> Delete
                                                 </a>
                                             </div>
