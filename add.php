@@ -1,16 +1,13 @@
 <?php
 $comp_model = new SharedController;
-$page_element_id = "edit-page-" . random_str();
+$page_element_id = "add-page-" . random_str();
 $current_page = $this->set_current_page_link();
 $csrf_token = Csrf::$token;
-$data = $this->view_data;
-//$rec_id = $data['__tableprimarykey'];
-$page_id = $this->route->page_id;
 $show_header = $this->show_header;
 $view_title = $this->view_title;
 $redirect_to = $this->redirect_to;
 ?>
-<section class="page" id="<?php echo $page_element_id; ?>" data-page-type="edit"  data-display-type="" data-page-url="<?php print_link($current_page); ?>">
+<section class="page" id="<?php echo $page_element_id; ?>" data-page-type="add"  data-display-type="" data-page-url="<?php print_link($current_page); ?>">
     <?php
     if( $show_header == true ){
     ?>
@@ -18,7 +15,7 @@ $redirect_to = $this->redirect_to;
         <div class="container">
             <div class="row ">
                 <div class="col ">
-                    <h4 class="record-title">Edit  Data</h4>
+                    <h4 class="record-title">Add New Data</h4>
                 </div>
             </div>
         </div>
@@ -32,7 +29,7 @@ $redirect_to = $this->redirect_to;
                 <div class="col-md-7 comp-grid">
                     <?php $this :: display_page_errors(); ?>
                     <div  class="bg-light p-3 animated fadeIn page-content">
-                        <form novalidate  id="" role="form" enctype="multipart/form-data"  class="form page-form form-horizontal needs-validation" action="<?php print_link("data/edit/$page_id/?csrf_token=$csrf_token"); ?>" method="post">
+                        <form id="data-add-form" role="form" novalidate enctype="multipart/form-data" class="form page-form form-horizontal needs-validation" action="<?php print_link("data/add?csrf_token=$csrf_token") ?>" method="post">
                             <div>
                                 <div class="form-group ">
                                     <div class="row">
@@ -41,7 +38,7 @@ $redirect_to = $this->redirect_to;
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="">
-                                                <input id="ctrl-kriteria"  value="<?php  echo $data['kriteria']; ?>" type="text" placeholder="Enter Kriteria"  required="" name="kriteria"  class="form-control " />
+                                                <input id="ctrl-kriteria"  value="<?php  echo $this->set_field_value('kriteria',""); ?>" type="text" placeholder="Enter Kriteria"  required="" name="kriteria"  class="form-control " />
                                                 </div>
                                             </div>
                                         </div>
@@ -53,7 +50,7 @@ $redirect_to = $this->redirect_to;
                                             </div>
                                             <div class="col-sm-8">
                                                 <div class="">
-                                                    <input id="ctrl-status"  value="<?php  echo $data['status']; ?>" type="text" placeholder="Enter Status"  required="" name="status"  class="form-control " />
+                                                    <input id="ctrl-status"  value="<?php  echo $this->set_field_value('status',""); ?>" type="text" placeholder="Enter Status"  required="" name="status"  class="form-control " />
                                                     </div>
                                                 </div>
                                             </div>
@@ -65,7 +62,7 @@ $redirect_to = $this->redirect_to;
                                                 </div>
                                                 <div class="col-sm-8">
                                                     <div class="">
-                                                        <input id="ctrl-bobot"  value="<?php  echo $data['bobot']; ?>" type="text" placeholder="Enter Bobot"  required="" name="bobot"  class="form-control " />
+                                                        <input id="ctrl-bobot"  value="<?php  echo $this->set_field_value('bobot',""); ?>" type="text" placeholder="Enter Bobot"  required="" name="bobot"  class="form-control " />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -77,16 +74,16 @@ $redirect_to = $this->redirect_to;
                                                     </div>
                                                     <div class="col-sm-8">
                                                         <div class="">
-                                                            <input id="ctrl-keterangan"  value="<?php  echo $data['keterangan']; ?>" type="text" placeholder="Enter Keterangan"  required="" name="keterangan"  class="form-control " />
+                                                            <input id="ctrl-keterangan"  value="<?php  echo $this->set_field_value('keterangan',""); ?>" type="text" placeholder="Enter Keterangan"  required="" name="keterangan"  class="form-control " />
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="form-ajax-status"></div>
-                                            <div class="form-group text-center">
+                                            <div class="form-group form-submit-btn-holder text-center mt-3">
+                                                <div class="form-ajax-status"></div>
                                                 <button class="btn btn-primary" type="submit">
-                                                    Update
+                                                    Submit
                                                     <i class="fa fa-send"></i>
                                                 </button>
                                             </div>
