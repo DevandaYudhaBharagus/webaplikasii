@@ -18,7 +18,7 @@ $redirect_to = $this->redirect_to;
         <div class="container">
             <div class="row ">
                 <div class="col ">
-                    <h4 class="record-title">Edit  Data</h4>
+                    <h4 class="record-title">Edit  Data Kriteria</h4>
                 </div>
             </div>
         </div>
@@ -32,16 +32,16 @@ $redirect_to = $this->redirect_to;
                 <div class="col-md-7 comp-grid">
                     <?php $this :: display_page_errors(); ?>
                     <div  class="bg-light p-3 animated fadeIn page-content">
-                        <form novalidate  id="" role="form" enctype="multipart/form-data"  class="form page-form form-horizontal needs-validation" action="<?php print_link("data/edit/$page_id/?csrf_token=$csrf_token"); ?>" method="post">
+                        <form novalidate  id="" role="form" enctype="multipart/form-data"  class="form page-form form-horizontal needs-validation" action="<?php print_link("data_kriteria/edit/$page_id/?csrf_token=$csrf_token"); ?>" method="post">
                             <div>
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="kriteria">Kriteria <span class="text-danger">*</span></label>
+                                            <label class="control-label" for="Kriteria">Kriteria <span class="text-danger">*</span></label>
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="">
-                                                <input id="ctrl-kriteria"  value="<?php  echo $data['kriteria']; ?>" type="text" placeholder="Enter Kriteria"  required="" name="kriteria"  class="form-control " />
+                                                <input id="ctrl-Kriteria"  value="<?php  echo $data['Kriteria']; ?>" type="text" placeholder="Enter Kriteria"  required="" name="Kriteria"  class="form-control " />
                                                 </div>
                                             </div>
                                         </div>
@@ -49,11 +49,11 @@ $redirect_to = $this->redirect_to;
                                     <div class="form-group ">
                                         <div class="row">
                                             <div class="col-sm-4">
-                                                <label class="control-label" for="status">Status <span class="text-danger">*</span></label>
+                                                <label class="control-label" for="Status">Status <span class="text-danger">*</span></label>
                                             </div>
                                             <div class="col-sm-8">
                                                 <div class="">
-                                                    <input id="ctrl-status"  value="<?php  echo $data['status']; ?>" type="text" placeholder="Enter Status"  required="" name="status"  class="form-control " />
+                                                    <input id="ctrl-Status"  value="<?php  echo $data['Status']; ?>" type="text" placeholder="Enter Status"  required="" name="Status"  class="form-control " />
                                                     </div>
                                                 </div>
                                             </div>
@@ -61,39 +61,27 @@ $redirect_to = $this->redirect_to;
                                         <div class="form-group ">
                                             <div class="row">
                                                 <div class="col-sm-4">
-                                                    <label class="control-label" for="bobot">Bobot <span class="text-danger">*</span></label>
+                                                    <label class="control-label" for="Bobot">Bobot <span class="text-danger">*</span></label>
                                                 </div>
                                                 <div class="col-sm-8">
                                                     <div class="">
-                                                        <input id="ctrl-bobot"  value="<?php  echo $data['bobot']; ?>" type="text" placeholder="Enter Bobot"  required="" name="bobot"  class="form-control " />
+                                                        <input id="ctrl-Bobot"  value="<?php  echo $data['Bobot']; ?>" type="text" placeholder="Enter Bobot"  required="" name="Bobot"  class="form-control " />
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="form-group ">
-                                                <div class="row">
-                                                    <div class="col-sm-4">
-                                                        <label class="control-label" for="keterangan">Keterangan <span class="text-danger">*</span></label>
-                                                    </div>
-                                                    <div class="col-sm-8">
-                                                        <div class="">
-                                                            <input id="ctrl-keterangan"  value="<?php  echo $data['keterangan']; ?>" type="text" placeholder="Enter Keterangan"  required="" name="keterangan"  class="form-control " />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-ajax-status"></div>
-                                            <div class="form-group text-center">
-                                                <button class="btn btn-primary" type="submit">
-                                                    Update
-                                                    <i class="fa fa-send"></i>
-                                                </button>
-                                            </div>
-                                        </form>
-                                    </div>
+                                        </div>
+                                        <div class="form-ajax-status"></div>
+                                        <div class="form-group text-center">
+                                            <button class="btn btn-primary" type="submit">
+                                                Update
+                                                <i class="fa fa-send"></i>
+                                            </button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
+            </section>

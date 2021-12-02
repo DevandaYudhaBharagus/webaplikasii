@@ -21,7 +21,7 @@ $show_export_btn = $this->show_export_btn;
         <div class="container">
             <div class="row ">
                 <div class="col ">
-                    <h4 class="record-title">View  Data</h4>
+                    <h4 class="record-title">View  Data Kriteria</h4>
                 </div>
             </div>
         </div>
@@ -38,24 +38,24 @@ $show_export_btn = $this->show_export_btn;
                         <?php
                         $counter = 0;
                         if(!empty($data)){
-                        $rec_id = (!empty($data['no']) ? urlencode($data['no']) : null);
+                        $rec_id = (!empty($data['id']) ? urlencode($data['id']) : null);
                         $counter++;
                         ?>
                         <div id="page-report-body" class="">
                             <table class="table table-hover table-borderless table-striped">
                                 <!-- Table Body Start -->
                                 <tbody class="page-data" id="page-data-<?php echo $page_element_id; ?>">
-                                    <tr  class="td-no">
-                                        <th class="title"> No: </th>
-                                        <td class="value"> <?php echo $data['no']; ?></td>
+                                    <tr  class="td-id">
+                                        <th class="title"> Id: </th>
+                                        <td class="value"> <?php echo $data['id']; ?></td>
                                     </tr>
-                                    <tr  class="td-kriteria">
+                                    <tr  class="td-Kriteria">
                                         <th class="title"> Kriteria: </th>
                                         <td class="value">
-                                            <span  data-value="<?php echo $data['kriteria']; ?>" 
-                                                data-pk="<?php echo $data['no'] ?>" 
-                                                data-url="<?php print_link("data/editfield/" . urlencode($data['no'])); ?>" 
-                                                data-name="kriteria" 
+                                            <span  data-value="<?php echo $data['Kriteria']; ?>" 
+                                                data-pk="<?php echo $data['id'] ?>" 
+                                                data-url="<?php print_link("data_kriteria/editfield/" . urlencode($data['id'])); ?>" 
+                                                data-name="Kriteria" 
                                                 data-title="Enter Kriteria" 
                                                 data-placement="left" 
                                                 data-toggle="click" 
@@ -63,17 +63,17 @@ $show_export_btn = $this->show_export_btn;
                                                 data-mode="popover" 
                                                 data-showbuttons="left" 
                                                 class="is-editable" >
-                                                <?php echo $data['kriteria']; ?> 
+                                                <?php echo $data['Kriteria']; ?> 
                                             </span>
                                         </td>
                                     </tr>
-                                    <tr  class="td-status">
+                                    <tr  class="td-Status">
                                         <th class="title"> Status: </th>
                                         <td class="value">
-                                            <span  data-value="<?php echo $data['status']; ?>" 
-                                                data-pk="<?php echo $data['no'] ?>" 
-                                                data-url="<?php print_link("data/editfield/" . urlencode($data['no'])); ?>" 
-                                                data-name="status" 
+                                            <span  data-value="<?php echo $data['Status']; ?>" 
+                                                data-pk="<?php echo $data['id'] ?>" 
+                                                data-url="<?php print_link("data_kriteria/editfield/" . urlencode($data['id'])); ?>" 
+                                                data-name="Status" 
                                                 data-title="Enter Status" 
                                                 data-placement="left" 
                                                 data-toggle="click" 
@@ -81,17 +81,17 @@ $show_export_btn = $this->show_export_btn;
                                                 data-mode="popover" 
                                                 data-showbuttons="left" 
                                                 class="is-editable" >
-                                                <?php echo $data['status']; ?> 
+                                                <?php echo $data['Status']; ?> 
                                             </span>
                                         </td>
                                     </tr>
-                                    <tr  class="td-bobot">
+                                    <tr  class="td-Bobot">
                                         <th class="title"> Bobot: </th>
                                         <td class="value">
-                                            <span  data-value="<?php echo $data['bobot']; ?>" 
-                                                data-pk="<?php echo $data['no'] ?>" 
-                                                data-url="<?php print_link("data/editfield/" . urlencode($data['no'])); ?>" 
-                                                data-name="bobot" 
+                                            <span  data-value="<?php echo $data['Bobot']; ?>" 
+                                                data-pk="<?php echo $data['id'] ?>" 
+                                                data-url="<?php print_link("data_kriteria/editfield/" . urlencode($data['id'])); ?>" 
+                                                data-name="Bobot" 
                                                 data-title="Enter Bobot" 
                                                 data-placement="left" 
                                                 data-toggle="click" 
@@ -99,25 +99,7 @@ $show_export_btn = $this->show_export_btn;
                                                 data-mode="popover" 
                                                 data-showbuttons="left" 
                                                 class="is-editable" >
-                                                <?php echo $data['bobot']; ?> 
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr  class="td-keterangan">
-                                        <th class="title"> Keterangan: </th>
-                                        <td class="value">
-                                            <span  data-value="<?php echo $data['keterangan']; ?>" 
-                                                data-pk="<?php echo $data['no'] ?>" 
-                                                data-url="<?php print_link("data/editfield/" . urlencode($data['no'])); ?>" 
-                                                data-name="keterangan" 
-                                                data-title="Enter Keterangan" 
-                                                data-placement="left" 
-                                                data-toggle="click" 
-                                                data-type="text" 
-                                                data-mode="popover" 
-                                                data-showbuttons="left" 
-                                                class="is-editable" >
-                                                <?php echo $data['keterangan']; ?> 
+                                                <?php echo $data['Bobot']; ?> 
                                             </span>
                                         </td>
                                     </tr>
@@ -153,12 +135,6 @@ $show_export_btn = $this->show_export_btn;
                                                         </a>
                                                     </div>
                                                 </div>
-                                                <a class="btn btn-sm btn-info"  href="<?php print_link("data/edit/$rec_id"); ?>">
-                                                    <i class="fa fa-edit"></i> Edit
-                                                </a>
-                                                <a class="btn btn-sm btn-danger record-delete-btn mx-1"  href="<?php print_link("data/delete/$rec_id/?csrf_token=$csrf_token&redirect=$current_page"); ?>" data-prompt-msg="Are you sure you want to delete this record?" data-display-style="modal">
-                                                    <i class="fa fa-times"></i> Delete
-                                                </a>
                                             </div>
                                             <?php
                                             }

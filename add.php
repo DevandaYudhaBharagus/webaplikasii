@@ -15,7 +15,7 @@ $redirect_to = $this->redirect_to;
         <div class="container">
             <div class="row ">
                 <div class="col ">
-                    <h4 class="record-title">Add New Data</h4>
+                    <h4 class="record-title">Add New Data Kriteria</h4>
                 </div>
             </div>
         </div>
@@ -29,16 +29,16 @@ $redirect_to = $this->redirect_to;
                 <div class="col-md-7 comp-grid">
                     <?php $this :: display_page_errors(); ?>
                     <div  class="bg-light p-3 animated fadeIn page-content">
-                        <form id="data-add-form" role="form" novalidate enctype="multipart/form-data" class="form page-form form-horizontal needs-validation" action="<?php print_link("data/add?csrf_token=$csrf_token") ?>" method="post">
+                        <form id="data_kriteria-add-form" role="form" novalidate enctype="multipart/form-data" class="form page-form form-horizontal needs-validation" action="<?php print_link("data_kriteria/add?csrf_token=$csrf_token") ?>" method="post">
                             <div>
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="kriteria">Kriteria <span class="text-danger">*</span></label>
+                                            <label class="control-label" for="Kriteria">Kriteria <span class="text-danger">*</span></label>
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="">
-                                                <input id="ctrl-kriteria"  value="<?php  echo $this->set_field_value('kriteria',""); ?>" type="text" placeholder="Enter Kriteria"  required="" name="kriteria"  class="form-control " />
+                                                <input id="ctrl-Kriteria"  value="<?php  echo $this->set_field_value('Kriteria',""); ?>" type="text" placeholder="Enter Kriteria"  required="" name="Kriteria"  class="form-control " />
                                                 </div>
                                             </div>
                                         </div>
@@ -46,11 +46,11 @@ $redirect_to = $this->redirect_to;
                                     <div class="form-group ">
                                         <div class="row">
                                             <div class="col-sm-4">
-                                                <label class="control-label" for="status">Status <span class="text-danger">*</span></label>
+                                                <label class="control-label" for="Status">Status <span class="text-danger">*</span></label>
                                             </div>
                                             <div class="col-sm-8">
                                                 <div class="">
-                                                    <input id="ctrl-status"  value="<?php  echo $this->set_field_value('status',""); ?>" type="text" placeholder="Enter Status"  required="" name="status"  class="form-control " />
+                                                    <input id="ctrl-Status"  value="<?php  echo $this->set_field_value('Status',""); ?>" type="text" placeholder="Enter Status"  required="" name="Status"  class="form-control " />
                                                     </div>
                                                 </div>
                                             </div>
@@ -58,39 +58,27 @@ $redirect_to = $this->redirect_to;
                                         <div class="form-group ">
                                             <div class="row">
                                                 <div class="col-sm-4">
-                                                    <label class="control-label" for="bobot">Bobot <span class="text-danger">*</span></label>
+                                                    <label class="control-label" for="Bobot">Bobot <span class="text-danger">*</span></label>
                                                 </div>
                                                 <div class="col-sm-8">
                                                     <div class="">
-                                                        <input id="ctrl-bobot"  value="<?php  echo $this->set_field_value('bobot',""); ?>" type="text" placeholder="Enter Bobot"  required="" name="bobot"  class="form-control " />
+                                                        <input id="ctrl-Bobot"  value="<?php  echo $this->set_field_value('Bobot',""); ?>" type="text" placeholder="Enter Bobot"  required="" name="Bobot"  class="form-control " />
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="form-group ">
-                                                <div class="row">
-                                                    <div class="col-sm-4">
-                                                        <label class="control-label" for="keterangan">Keterangan <span class="text-danger">*</span></label>
-                                                    </div>
-                                                    <div class="col-sm-8">
-                                                        <div class="">
-                                                            <input id="ctrl-keterangan"  value="<?php  echo $this->set_field_value('keterangan',""); ?>" type="text" placeholder="Enter Keterangan"  required="" name="keterangan"  class="form-control " />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group form-submit-btn-holder text-center mt-3">
-                                                <div class="form-ajax-status"></div>
-                                                <button class="btn btn-primary" type="submit">
-                                                    Submit
-                                                    <i class="fa fa-send"></i>
-                                                </button>
-                                            </div>
-                                        </form>
-                                    </div>
+                                        </div>
+                                        <div class="form-group form-submit-btn-holder text-center mt-3">
+                                            <div class="form-ajax-status"></div>
+                                            <button class="btn btn-primary" type="submit">
+                                                Submit
+                                                <i class="fa fa-send"></i>
+                                            </button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
+            </section>
