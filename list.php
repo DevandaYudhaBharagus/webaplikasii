@@ -15,24 +15,24 @@ $show_header = $this->show_header;
 $show_footer = $this->show_footer;
 $show_pagination = $this->show_pagination;
 ?>
-<section class="page" id="<?php echo $page_element_id; ?>" data-page-type="list"  data-display-type="table" data-page-url="<?php print_link($current_page); ?>">
+<section class="page ajax-page" id="<?php echo $page_element_id; ?>" data-page-type="list"  data-display-type="grid" data-page-url="<?php print_link($current_page); ?>">
     <?php
     if( $show_header == true ){
     ?>
-    <div  class="bg-light p-3 mb-3">
+    <div  class="py-3">
         <div class="container-fluid">
             <div class="row ">
                 <div class="col ">
-                    <h4 class="record-title">Data Kriteria</h4>
+                    <h4 class="record-title">Data Penduduk</h4>
                 </div>
                 <div class="col-sm-3 ">
-                    <a  class="btn btn btn-primary my-1" href="<?php print_link("data_kriteria/add") ?>">
+                    <a  class="btn btn btn-primary my-1" href="<?php print_link("data_penduduk/add") ?>">
                         <i class="fa fa-plus"></i>                              
-                        Add New Data Kriteria 
+                        Tambah Data Penduduk 
                     </a>
                 </div>
                 <div class="col-sm-4 ">
-                    <form  class="search" action="<?php print_link('data_kriteria'); ?>" method="get">
+                    <form  class="search" action="<?php print_link('data_penduduk'); ?>" method="get">
                         <div class="input-group">
                             <input value="<?php echo get_value('search'); ?>" class="form-control" type="text" name="search"  placeholder="Search" />
                                 <div class="input-group-append">
@@ -54,7 +54,7 @@ $show_pagination = $this->show_pagination;
                                     if(!empty($field_name)){
                                     ?>
                                     <li class="breadcrumb-item">
-                                        <a class="text-decoration-none" href="<?php print_link('data_kriteria'); ?>">
+                                        <a class="text-decoration-none" href="<?php print_link('data_penduduk'); ?>">
                                             <i class="fa fa-angle-left"></i>
                                         </a>
                                     </li>
@@ -71,7 +71,7 @@ $show_pagination = $this->show_pagination;
                                     if(get_value("search")){
                                     ?>
                                     <li class="breadcrumb-item">
-                                        <a class="text-decoration-none" href="<?php print_link('data_kriteria'); ?>">
+                                        <a class="text-decoration-none" href="<?php print_link('data_penduduk'); ?>">
                                             <i class="fa fa-angle-left"></i>
                                         </a>
                                     </li>
@@ -102,159 +102,180 @@ $show_pagination = $this->show_pagination;
                     <div class="col-md-12 comp-grid">
                         <?php $this :: display_page_errors(); ?>
                         <div  class=" animated fadeIn page-content">
-                            <div id="data_kriteria-list-records">
-                                <div id="page-report-body" class="table-responsive">
-                                    <table class="table  table-striped table-sm text-left">
-                                        <thead class="table-header bg-light">
-                                            <tr>
-                                                <th class="td-sno">#</th>
-                                                <th  class="td-id"> ID</th>
-                                                <th  class="td-Kriteria"> Kriteria</th>
-                                                <th  class="td-Status"> Status</th>
-                                                <th  class="td-Bobot"> Bobot</th>
-                                                <th class="td-btn"></th>
-                                            </tr>
-                                        </thead>
-                                        <?php
-                                        if(!empty($records)){
-                                        ?>
-                                        <tbody class="page-data" id="page-data-<?php echo $page_element_id; ?>">
-                                            <!--record-->
-                                            <?php
-                                            $counter = 0;
-                                            foreach($records as $data){
-                                            $rec_id = (!empty($data['id']) ? urlencode($data['id']) : null);
-                                            $counter++;
-                                            ?>
-                                            <tr>
-                                                <th class="td-sno"><?php echo $counter; ?></th>
-                                                <td class="td-id"><a href="<?php print_link("data_kriteria/view/$data[id]") ?>"><?php echo $data['id']; ?></a></td>
-                                                <td class="td-Kriteria">
-                                                    <span  data-value="<?php echo $data['Kriteria']; ?>" 
-                                                        data-pk="<?php echo $data['id'] ?>" 
-                                                        data-url="<?php print_link("data_kriteria/editfield/" . urlencode($data['id'])); ?>" 
-                                                        data-name="Kriteria" 
-                                                        data-title="Enter Kriteria" 
-                                                        data-placement="left" 
-                                                        data-toggle="click" 
-                                                        data-type="text" 
-                                                        data-mode="popover" 
-                                                        data-showbuttons="left" 
-                                                        class="is-editable" >
-                                                        <?php echo $data['Kriteria']; ?> 
-                                                    </span>
-                                                </td>
-                                                <td class="td-Status">
-                                                    <span  data-value="<?php echo $data['Status']; ?>" 
-                                                        data-pk="<?php echo $data['id'] ?>" 
-                                                        data-url="<?php print_link("data_kriteria/editfield/" . urlencode($data['id'])); ?>" 
-                                                        data-name="Status" 
-                                                        data-title="Enter Status" 
-                                                        data-placement="left" 
-                                                        data-toggle="click" 
-                                                        data-type="text" 
-                                                        data-mode="popover" 
-                                                        data-showbuttons="left" 
-                                                        class="is-editable" >
-                                                        <?php echo $data['Status']; ?> 
-                                                    </span>
-                                                </td>
-                                                <td class="td-Bobot">
-                                                    <span  data-value="<?php echo $data['Bobot']; ?>" 
-                                                        data-pk="<?php echo $data['id'] ?>" 
-                                                        data-url="<?php print_link("data_kriteria/editfield/" . urlencode($data['id'])); ?>" 
-                                                        data-name="Bobot" 
-                                                        data-title="Enter Bobot" 
-                                                        data-placement="left" 
-                                                        data-toggle="click" 
-                                                        data-type="text" 
-                                                        data-mode="popover" 
-                                                        data-showbuttons="left" 
-                                                        class="is-editable" >
-                                                        <?php echo $data['Bobot']; ?> 
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                            <?php 
-                                            }
-                                            ?>
-                                            <!--endrecord-->
-                                        </tbody>
-                                        <tbody class="search-data" id="search-data-<?php echo $page_element_id; ?>"></tbody>
-                                        <?php
-                                        }
-                                        ?>
-                                    </table>
-                                    <?php 
-                                    if(empty($records)){
-                                    ?>
-                                    <h4 class="bg-light text-center border-top text-muted animated bounce  p-3">
-                                        <i class="fa fa-ban"></i> No record found
-                                    </h4>
-                                    <?php
-                                    }
-                                    ?>
-                                </div>
+                            <div id="data_penduduk-list-records">
                                 <?php
-                                if( $show_footer && !empty($records)){
+                                if(!empty($records)){
                                 ?>
-                                <div class=" border-top mt-2">
-                                    <div class="row justify-content-center">    
-                                        <div class="col-md-auto justify-content-center">    
-                                            <div class="p-3 d-flex justify-content-between">    
-                                                <div class="dropup export-btn-holder mx-1">
-                                                    <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="fa fa-save"></i> Export
-                                                    </button>
-                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                        <?php $export_print_link = $this->set_current_page_link(array('format' => 'print')); ?>
-                                                        <a class="dropdown-item export-link-btn" data-format="print" href="<?php print_link($export_print_link); ?>" target="_blank">
-                                                            <img src="<?php print_link('assets/images/print.png') ?>" class="mr-2" /> PRINT
-                                                            </a>
-                                                            <?php $export_pdf_link = $this->set_current_page_link(array('format' => 'pdf')); ?>
-                                                            <a class="dropdown-item export-link-btn" data-format="pdf" href="<?php print_link($export_pdf_link); ?>" target="_blank">
-                                                                <img src="<?php print_link('assets/images/pdf.png') ?>" class="mr-2" /> PDF
-                                                                </a>
-                                                                <?php $export_word_link = $this->set_current_page_link(array('format' => 'word')); ?>
-                                                                <a class="dropdown-item export-link-btn" data-format="word" href="<?php print_link($export_word_link); ?>" target="_blank">
-                                                                    <img src="<?php print_link('assets/images/doc.png') ?>" class="mr-2" /> WORD
-                                                                    </a>
-                                                                    <?php $export_csv_link = $this->set_current_page_link(array('format' => 'csv')); ?>
-                                                                    <a class="dropdown-item export-link-btn" data-format="csv" href="<?php print_link($export_csv_link); ?>" target="_blank">
-                                                                        <img src="<?php print_link('assets/images/csv.png') ?>" class="mr-2" /> CSV
-                                                                        </a>
-                                                                        <?php $export_excel_link = $this->set_current_page_link(array('format' => 'excel')); ?>
-                                                                        <a class="dropdown-item export-link-btn" data-format="excel" href="<?php print_link($export_excel_link); ?>" target="_blank">
-                                                                            <img src="<?php print_link('assets/images/xsl.png') ?>" class="mr-2" /> EXCEL
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col">   
-                                                                <?php
-                                                                if($show_pagination == true){
-                                                                $pager = new Pagination($total_records, $record_count);
-                                                                $pager->route = $this->route;
-                                                                $pager->show_page_count = true;
-                                                                $pager->show_record_count = true;
-                                                                $pager->show_page_limit =true;
-                                                                $pager->limit_count = $this->limit_count;
-                                                                $pager->show_page_number_list = true;
-                                                                $pager->pager_link_range=5;
-                                                                $pager->render();
-                                                                }
-                                                                ?>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <?php
-                                                    }
-                                                    ?>
+                                <div id="page-report-body">
+                                    <?php Html::ajaxpage_spinner(); ?>
+                                    <div class="row sm-gutters page-data" id="page-data-<?php echo $page_element_id; ?>">
+                                        <!--record-->
+                                        <?php
+                                        $counter = 0;
+                                        foreach($records as $data){
+                                        $rec_id = (!empty($data['no_kk']) ? urlencode($data['no_kk']) : null);
+                                        $counter++;
+                                        ?>
+                                        <div class="col-sm-4">
+                                            <div class="bg-light p-2 mb-3 animated bounceIn">
+                                                <div class="mb-2">  
+                                                    <span class="font-weight-light text-muted d-block">
+                                                        No Kartu keluarga
+                                                    </span>
+                                                <?php echo $data['no_kk']; ?></div>
+                                                <div class="mb-2">  
+                                                    <span  data-value="<?php echo $data['nama_lengkap']; ?>" 
+                                                        data-pk="<?php echo $data['no_kk'] ?>" 
+                                                        data-url="<?php print_link("data_penduduk/editfield/" . urlencode($data['no_kk'])); ?>" 
+                                                        data-name="nama_lengkap" 
+                                                        data-title="Enter Nama Lengkap" 
+                                                        data-placement="left" 
+                                                        data-toggle="click" 
+                                                        data-type="text" 
+                                                        data-mode="popover" 
+                                                        data-showbuttons="left" 
+                                                        class="is-editable" >
+                                                        <span class="font-weight-light text-muted d-block">
+                                                            Nama Lengkap
+                                                        </span>
+                                                        <?php echo $data['nama_lengkap']; ?> 
+                                                    </span>
+                                                </div>
+                                                <div class="mb-2">  
+                                                    <span  data-value="<?php echo $data['tempat_lahir']; ?>" 
+                                                        data-pk="<?php echo $data['no_kk'] ?>" 
+                                                        data-url="<?php print_link("data_penduduk/editfield/" . urlencode($data['no_kk'])); ?>" 
+                                                        data-name="tempat_lahir" 
+                                                        data-title="Enter Tempat Lahir" 
+                                                        data-placement="left" 
+                                                        data-toggle="click" 
+                                                        data-type="text" 
+                                                        data-mode="popover" 
+                                                        data-showbuttons="left" 
+                                                        class="is-editable" >
+                                                        <span class="font-weight-light text-muted d-block">
+                                                            Tempat Lahir
+                                                        </span>
+                                                        <?php echo $data['tempat_lahir']; ?> 
+                                                    </span>
+                                                </div>
+                                                <div class="mb-2">  
+                                                    <span  data-value="<?php echo $data['tanggal_lahir']; ?>" 
+                                                        data-pk="<?php echo $data['no_kk'] ?>" 
+                                                        data-url="<?php print_link("data_penduduk/editfield/" . urlencode($data['no_kk'])); ?>" 
+                                                        data-name="tanggal_lahir" 
+                                                        data-title="Enter Tanggal Lahir" 
+                                                        data-placement="right" 
+                                                        data-toggle="mouseenter" 
+                                                        data-type="date" 
+                                                        data-mode="popover" 
+                                                        data-showbuttons="bottom" 
+                                                        class="is-editable" >
+                                                        <span class="font-weight-light text-muted d-block">
+                                                            Tanggal Lahir
+                                                        </span>
+                                                        <?php echo $data['tanggal_lahir']; ?> 
+                                                    </span>
+                                                </div>
+                                                <div class="mb-2">  
+                                                    <span  data-value="<?php echo $data['jenis_kelamin']; ?>" 
+                                                        data-pk="<?php echo $data['no_kk'] ?>" 
+                                                        data-url="<?php print_link("data_penduduk/editfield/" . urlencode($data['no_kk'])); ?>" 
+                                                        data-name="jenis_kelamin" 
+                                                        data-title="Enter Jenis Kelamin" 
+                                                        data-placement="left" 
+                                                        data-toggle="click" 
+                                                        data-type="text" 
+                                                        data-mode="popover" 
+                                                        data-showbuttons="left" 
+                                                        class="is-editable" >
+                                                        <span class="font-weight-light text-muted d-block">
+                                                            Jenis Kelamin
+                                                        </span>
+                                                        <?php echo $data['jenis_kelamin']; ?> 
+                                                    </span>
+                                                </div>
+                                                <div class="mb-2">  
+                                                    <span  data-value="<?php echo $data['alamat']; ?>" 
+                                                        data-pk="<?php echo $data['no_kk'] ?>" 
+                                                        data-url="<?php print_link("data_penduduk/editfield/" . urlencode($data['no_kk'])); ?>" 
+                                                        data-name="alamat" 
+                                                        data-title="Enter Alamat" 
+                                                        data-placement="left" 
+                                                        data-toggle="click" 
+                                                        data-type="text" 
+                                                        data-mode="popover" 
+                                                        data-showbuttons="left" 
+                                                        class="is-editable" >
+                                                        <span class="font-weight-light text-muted d-block">
+                                                            Alamat
+                                                        </span>
+                                                        <?php echo $data['alamat']; ?> 
+                                                    </span>
+                                                </div>
+                                                <div class="td-btn">
+                                                    <a class="btn btn-sm btn-success has-tooltip page-modal" title="View Record" href="<?php print_link("data_penduduk/view/$rec_id"); ?>">
+                                                        <i class="fa fa-eye"></i> View
+                                                    </a>
+                                                    <a class="btn btn-sm btn-info has-tooltip page-modal" title="Edit This Record" href="<?php print_link("data_penduduk/edit/$rec_id"); ?>">
+                                                        <i class="fa fa-edit"></i> Edit
+                                                    </a>
+                                                    <a class="btn btn-sm btn-danger has-tooltip record-delete-btn" title="Delete this record" href="<?php print_link("data_penduduk/delete/$rec_id/?csrf_token=$csrf_token&redirect=$current_page"); ?>" data-prompt-msg="Are you sure you want to delete this record?" data-display-style="modal">
+                                                        <i class="fa fa-times"></i>
+                                                        Delete
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
+                                        <?php 
+                                        }
+                                        ?>
+                                        <!--endrecord-->
+                                    </div>
+                                    <div class="row sm-gutters search-data" id="search-data-<?php echo $page_element_id; ?>"></div>
+                                    <div>
                                     </div>
                                 </div>
+                                <?php
+                                if($show_footer == true){
+                                ?>
+                                <div class=" border-top mt-2">
+                                    <div class="row justify-content-center">    
+                                        <div class="col-md-auto">   
+                                        </div>
+                                        <div class="col">   
+                                            <?php
+                                            if($show_pagination == true){
+                                            $pager = new Pagination($total_records, $record_count);
+                                            $pager->route = $this->route;
+                                            $pager->show_page_count = true;
+                                            $pager->show_record_count = true;
+                                            $pager->show_page_limit =true;
+                                            $pager->limit_count = $this->limit_count;
+                                            $pager->show_page_number_list = true;
+                                            $pager->pager_link_range=5;
+                                            $pager->ajax_page = true;
+                                            $pager->render();
+                                            }
+                                            ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php
+                                }
+                                }
+                                else{
+                                ?>
+                                <div class="text-muted  animated bounce p-3">
+                                    <h4><i class="fa fa-ban"></i> No record found</h4>
+                                </div>
+                                <?php
+                                }
+                                ?>
                             </div>
-                        </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

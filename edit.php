@@ -18,7 +18,7 @@ $redirect_to = $this->redirect_to;
         <div class="container">
             <div class="row ">
                 <div class="col ">
-                    <h4 class="record-title">Edit  Data Kriteria</h4>
+                    <h4 class="record-title">Edit  Data Penduduk</h4>
                 </div>
             </div>
         </div>
@@ -32,16 +32,16 @@ $redirect_to = $this->redirect_to;
                 <div class="col-md-7 comp-grid">
                     <?php $this :: display_page_errors(); ?>
                     <div  class="bg-light p-3 animated fadeIn page-content">
-                        <form novalidate  id="" role="form" enctype="multipart/form-data"  class="form page-form form-horizontal needs-validation" action="<?php print_link("data_kriteria/edit/$page_id/?csrf_token=$csrf_token"); ?>" method="post">
+                        <form novalidate  id="" role="form" enctype="multipart/form-data"  class="form page-form form-horizontal needs-validation" action="<?php print_link("data_penduduk/edit/$page_id/?csrf_token=$csrf_token"); ?>" method="post">
                             <div>
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="Kriteria">Kriteria <span class="text-danger">*</span></label>
+                                            <label class="control-label" for="nama_lengkap">Nama Lengkap <span class="text-danger">*</span></label>
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="">
-                                                <input id="ctrl-Kriteria"  value="<?php  echo $data['Kriteria']; ?>" type="text" placeholder="Enter Kriteria"  required="" name="Kriteria"  class="form-control " />
+                                                <input id="ctrl-nama_lengkap"  value="<?php  echo $data['nama_lengkap']; ?>" type="text" placeholder="Enter Nama Lengkap"  required="" name="nama_lengkap"  class="form-control " />
                                                 </div>
                                             </div>
                                         </div>
@@ -49,11 +49,11 @@ $redirect_to = $this->redirect_to;
                                     <div class="form-group ">
                                         <div class="row">
                                             <div class="col-sm-4">
-                                                <label class="control-label" for="Status">Status <span class="text-danger">*</span></label>
+                                                <label class="control-label" for="tempat_lahir">Tempat Lahir <span class="text-danger">*</span></label>
                                             </div>
                                             <div class="col-sm-8">
                                                 <div class="">
-                                                    <input id="ctrl-Status"  value="<?php  echo $data['Status']; ?>" type="text" placeholder="Enter Status"  required="" name="Status"  class="form-control " />
+                                                    <input id="ctrl-tempat_lahir"  value="<?php  echo $data['tempat_lahir']; ?>" type="text" placeholder="Enter Tempat Lahir"  required="" name="tempat_lahir"  class="form-control " />
                                                     </div>
                                                 </div>
                                             </div>
@@ -61,27 +61,54 @@ $redirect_to = $this->redirect_to;
                                         <div class="form-group ">
                                             <div class="row">
                                                 <div class="col-sm-4">
-                                                    <label class="control-label" for="Bobot">Bobot <span class="text-danger">*</span></label>
+                                                    <label class="control-label" for="tanggal_lahir">Tanggal Lahir </label>
                                                 </div>
                                                 <div class="col-sm-8">
-                                                    <div class="">
-                                                        <input id="ctrl-Bobot"  value="<?php  echo $data['Bobot']; ?>" type="text" placeholder="Enter Bobot"  required="" name="Bobot"  class="form-control " />
+                                                    <div class="input-group">
+                                                        <input id="ctrl-tanggal_lahir" class="form-control datepicker  datepicker"  value="<?php  echo $data['tanggal_lahir']; ?>" type="datetime" name="tanggal_lahir" placeholder="Enter Tanggal Lahir" data-enable-time="false" data-min-date="" data-max-date="" data-date-format="Y-m-d" data-alt-format="Y-m-d" data-inline="false" data-no-calendar="false" data-mode="single" />
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="form-group ">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <label class="control-label" for="jenis_kelamin">Jenis Kelamin <span class="text-danger">*</span></label>
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <div class="">
+                                                            <input id="ctrl-jenis_kelamin"  value="<?php  echo $data['jenis_kelamin']; ?>" type="text" placeholder="Enter Jenis Kelamin"  required="" name="jenis_kelamin"  class="form-control " />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group ">
+                                                    <div class="row">
+                                                        <div class="col-sm-4">
+                                                            <label class="control-label" for="alamat">Alamat <span class="text-danger">*</span></label>
+                                                        </div>
+                                                        <div class="col-sm-8">
+                                                            <div class="">
+                                                                <input id="ctrl-alamat"  value="<?php  echo $data['alamat']; ?>" type="text" placeholder="Enter Alamat"  required="" name="alamat"  class="form-control " />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-ajax-status"></div>
+                                                <div class="form-group text-center">
+                                                    <button class="btn btn-primary" type="submit">
+                                                        Update
+                                                        <i class="fa fa-send"></i>
+                                                    </button>
+                                                </div>
+                                            </form>
                                         </div>
-                                        <div class="form-ajax-status"></div>
-                                        <div class="form-group text-center">
-                                            <button class="btn btn-primary" type="submit">
-                                                Update
-                                                <i class="fa fa-send"></i>
-                                            </button>
-                                        </div>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </section>
+                    </section>

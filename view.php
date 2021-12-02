@@ -21,7 +21,7 @@ $show_export_btn = $this->show_export_btn;
         <div class="container">
             <div class="row ">
                 <div class="col ">
-                    <h4 class="record-title">View  Data Kriteria</h4>
+                    <h4 class="record-title">View  Data Penduduk</h4>
                 </div>
             </div>
         </div>
@@ -38,68 +38,90 @@ $show_export_btn = $this->show_export_btn;
                         <?php
                         $counter = 0;
                         if(!empty($data)){
-                        $rec_id = (!empty($data['id']) ? urlencode($data['id']) : null);
+                        $rec_id = (!empty($data['no_kk']) ? urlencode($data['no_kk']) : null);
                         $counter++;
                         ?>
                         <div id="page-report-body" class="">
                             <table class="table table-hover table-borderless table-striped">
                                 <!-- Table Body Start -->
                                 <tbody class="page-data" id="page-data-<?php echo $page_element_id; ?>">
-                                    <tr  class="td-id">
-                                        <th class="title"> Id: </th>
-                                        <td class="value"> <?php echo $data['id']; ?></td>
+                                    <tr  class="td-no_kk">
+                                        <th class="title"> No Kk: </th>
+                                        <td class="value"> <?php echo $data['no_kk']; ?></td>
                                     </tr>
-                                    <tr  class="td-Kriteria">
-                                        <th class="title"> Kriteria: </th>
+                                    <tr  class="td-nama_lengkap">
+                                        <th class="title"> Nama Lengkap: </th>
                                         <td class="value">
-                                            <span  data-value="<?php echo $data['Kriteria']; ?>" 
-                                                data-pk="<?php echo $data['id'] ?>" 
-                                                data-url="<?php print_link("data_kriteria/editfield/" . urlencode($data['id'])); ?>" 
-                                                data-name="Kriteria" 
-                                                data-title="Enter Kriteria" 
+                                            <span  data-value="<?php echo $data['nama_lengkap']; ?>" 
+                                                data-pk="<?php echo $data['no_kk'] ?>" 
+                                                data-url="<?php print_link("data_penduduk/editfield/" . urlencode($data['no_kk'])); ?>" 
+                                                data-name="nama_lengkap" 
+                                                data-title="Enter Nama Lengkap" 
                                                 data-placement="left" 
                                                 data-toggle="click" 
                                                 data-type="text" 
                                                 data-mode="popover" 
                                                 data-showbuttons="left" 
                                                 class="is-editable" >
-                                                <?php echo $data['Kriteria']; ?> 
+                                                <?php echo $data['nama_lengkap']; ?> 
                                             </span>
                                         </td>
                                     </tr>
-                                    <tr  class="td-Status">
-                                        <th class="title"> Status: </th>
+                                    <tr  class="td-tempat_lahir">
+                                        <th class="title"> Tempat Lahir: </th>
                                         <td class="value">
-                                            <span  data-value="<?php echo $data['Status']; ?>" 
-                                                data-pk="<?php echo $data['id'] ?>" 
-                                                data-url="<?php print_link("data_kriteria/editfield/" . urlencode($data['id'])); ?>" 
-                                                data-name="Status" 
-                                                data-title="Enter Status" 
+                                            <span  data-value="<?php echo $data['tempat_lahir']; ?>" 
+                                                data-pk="<?php echo $data['no_kk'] ?>" 
+                                                data-url="<?php print_link("data_penduduk/editfield/" . urlencode($data['no_kk'])); ?>" 
+                                                data-name="tempat_lahir" 
+                                                data-title="Enter Tempat Lahir" 
                                                 data-placement="left" 
                                                 data-toggle="click" 
                                                 data-type="text" 
                                                 data-mode="popover" 
                                                 data-showbuttons="left" 
                                                 class="is-editable" >
-                                                <?php echo $data['Status']; ?> 
+                                                <?php echo $data['tempat_lahir']; ?> 
                                             </span>
                                         </td>
                                     </tr>
-                                    <tr  class="td-Bobot">
-                                        <th class="title"> Bobot: </th>
+                                    <tr  class="td-tanggal_lahir">
+                                        <th class="title"> Tanggal Lahir: </th>
+                                        <td class="value"><?php echo $data['tanggal_lahir']; ?></td>
+                                    </tr>
+                                    <tr  class="td-jenis_kelamin">
+                                        <th class="title"> Jenis Kelamin: </th>
                                         <td class="value">
-                                            <span  data-value="<?php echo $data['Bobot']; ?>" 
-                                                data-pk="<?php echo $data['id'] ?>" 
-                                                data-url="<?php print_link("data_kriteria/editfield/" . urlencode($data['id'])); ?>" 
-                                                data-name="Bobot" 
-                                                data-title="Enter Bobot" 
+                                            <span  data-value="<?php echo $data['jenis_kelamin']; ?>" 
+                                                data-pk="<?php echo $data['no_kk'] ?>" 
+                                                data-url="<?php print_link("data_penduduk/editfield/" . urlencode($data['no_kk'])); ?>" 
+                                                data-name="jenis_kelamin" 
+                                                data-title="Enter Jenis Kelamin" 
                                                 data-placement="left" 
                                                 data-toggle="click" 
                                                 data-type="text" 
                                                 data-mode="popover" 
                                                 data-showbuttons="left" 
                                                 class="is-editable" >
-                                                <?php echo $data['Bobot']; ?> 
+                                                <?php echo $data['jenis_kelamin']; ?> 
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr  class="td-alamat">
+                                        <th class="title"> Alamat: </th>
+                                        <td class="value">
+                                            <span  data-value="<?php echo $data['alamat']; ?>" 
+                                                data-pk="<?php echo $data['no_kk'] ?>" 
+                                                data-url="<?php print_link("data_penduduk/editfield/" . urlencode($data['no_kk'])); ?>" 
+                                                data-name="alamat" 
+                                                data-title="Enter Alamat" 
+                                                data-placement="left" 
+                                                data-toggle="click" 
+                                                data-type="text" 
+                                                data-mode="popover" 
+                                                data-showbuttons="left" 
+                                                class="is-editable" >
+                                                <?php echo $data['alamat']; ?> 
                                             </span>
                                         </td>
                                     </tr>
@@ -135,6 +157,12 @@ $show_export_btn = $this->show_export_btn;
                                                         </a>
                                                     </div>
                                                 </div>
+                                                <a class="btn btn-sm btn-info"  href="<?php print_link("data_penduduk/edit/$rec_id"); ?>">
+                                                    <i class="fa fa-edit"></i> Edit
+                                                </a>
+                                                <a class="btn btn-sm btn-danger record-delete-btn mx-1"  href="<?php print_link("data_penduduk/delete/$rec_id/?csrf_token=$csrf_token&redirect=$current_page"); ?>" data-prompt-msg="Are you sure you want to delete this record?" data-display-style="modal">
+                                                    <i class="fa fa-times"></i> Delete
+                                                </a>
                                             </div>
                                             <?php
                                             }

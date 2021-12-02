@@ -15,7 +15,7 @@ $redirect_to = $this->redirect_to;
         <div class="container">
             <div class="row ">
                 <div class="col ">
-                    <h4 class="record-title">Add New Data Kriteria</h4>
+                    <h4 class="record-title">Add New Data Penduduk</h4>
                 </div>
             </div>
         </div>
@@ -29,56 +29,59 @@ $redirect_to = $this->redirect_to;
                 <div class="col-md-7 comp-grid">
                     <?php $this :: display_page_errors(); ?>
                     <div  class="bg-light p-3 animated fadeIn page-content">
-                        <form id="data_kriteria-add-form" role="form" novalidate enctype="multipart/form-data" class="form page-form form-horizontal needs-validation" action="<?php print_link("data_kriteria/add?csrf_token=$csrf_token") ?>" method="post">
+                        <form id="data_penduduk-add-form" role="form" novalidate enctype="multipart/form-data" class="form page-form form-vertical needs-validation" action="<?php print_link("data_penduduk/add?csrf_token=$csrf_token") ?>" method="post">
                             <div>
                                 <div class="form-group ">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <label class="control-label" for="Kriteria">Kriteria <span class="text-danger">*</span></label>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <div class="">
-                                                <input id="ctrl-Kriteria"  value="<?php  echo $this->set_field_value('Kriteria',""); ?>" type="text" placeholder="Enter Kriteria"  required="" name="Kriteria"  class="form-control " />
-                                                </div>
-                                            </div>
+                                    <label class="control-label" for="no_kk">No Kk <span class="text-danger">*</span></label>
+                                    <div id="ctrl-no_kk-holder" class=""> 
+                                        <input id="ctrl-no_kk"  value="<?php  echo $this->set_field_value('no_kk',""); ?>" type="number" placeholder="Enter No Kk" step="1"  required="" name="no_kk"  class="form-control " />
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <div class="row">
-                                            <div class="col-sm-4">
-                                                <label class="control-label" for="Status">Status <span class="text-danger">*</span></label>
-                                            </div>
-                                            <div class="col-sm-8">
-                                                <div class="">
-                                                    <input id="ctrl-Status"  value="<?php  echo $this->set_field_value('Status',""); ?>" type="text" placeholder="Enter Status"  required="" name="Status"  class="form-control " />
-                                                    </div>
-                                                </div>
+                                        <label class="control-label" for="nama_lengkap">Nama Lengkap <span class="text-danger">*</span></label>
+                                        <div id="ctrl-nama_lengkap-holder" class=""> 
+                                            <input id="ctrl-nama_lengkap"  value="<?php  echo $this->set_field_value('nama_lengkap',""); ?>" type="text" placeholder="Enter Nama Lengkap"  required="" name="nama_lengkap"  class="form-control " />
                                             </div>
                                         </div>
                                         <div class="form-group ">
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <label class="control-label" for="Bobot">Bobot <span class="text-danger">*</span></label>
+                                            <label class="control-label" for="tempat_lahir">Tempat Lahir <span class="text-danger">*</span></label>
+                                            <div id="ctrl-tempat_lahir-holder" class=""> 
+                                                <input id="ctrl-tempat_lahir"  value="<?php  echo $this->set_field_value('tempat_lahir',""); ?>" type="text" placeholder="Enter Tempat Lahir"  required="" name="tempat_lahir"  class="form-control " />
                                                 </div>
-                                                <div class="col-sm-8">
-                                                    <div class="">
-                                                        <input id="ctrl-Bobot"  value="<?php  echo $this->set_field_value('Bobot',""); ?>" type="text" placeholder="Enter Bobot"  required="" name="Bobot"  class="form-control " />
+                                            </div>
+                                            <div class="form-group ">
+                                                <label class="control-label" for="tanggal_lahir">Tanggal Lahir </label>
+                                                <div id="ctrl-tanggal_lahir-holder" class="input-group"> 
+                                                    <input id="ctrl-tanggal_lahir" class="form-control datepicker  datepicker"  value="<?php  echo $this->set_field_value('tanggal_lahir',format_date('Y-m-d ')); ?>" type="datetime" name="tanggal_lahir" placeholder="Enter Tanggal Lahir" data-enable-time="false" data-min-date="" data-max-date="" data-date-format="Y-m-d" data-alt-format="Y-m-d" data-inline="false" data-no-calendar="false" data-mode="single" />
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="form-group ">
+                                                    <label class="control-label" for="jenis_kelamin">Jenis Kelamin <span class="text-danger">*</span></label>
+                                                    <div id="ctrl-jenis_kelamin-holder" class=""> 
+                                                        <input id="ctrl-jenis_kelamin"  value="<?php  echo $this->set_field_value('jenis_kelamin',""); ?>" type="text" placeholder="Enter Jenis Kelamin"  required="" name="jenis_kelamin"  class="form-control " />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group ">
+                                                        <label class="control-label" for="alamat">Alamat <span class="text-danger">*</span></label>
+                                                        <div id="ctrl-alamat-holder" class=""> 
+                                                            <input id="ctrl-alamat"  value="<?php  echo $this->set_field_value('alamat',""); ?>" type="text" placeholder="Enter Alamat"  required="" name="alamat"  class="form-control " />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group form-submit-btn-holder text-center mt-3">
+                                                        <div class="form-ajax-status"></div>
+                                                        <button class="btn btn-primary" type="submit">
+                                                            Submit
+                                                            <i class="fa fa-send"></i>
+                                                        </button>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
-                                        <div class="form-group form-submit-btn-holder text-center mt-3">
-                                            <div class="form-ajax-status"></div>
-                                            <button class="btn btn-primary" type="submit">
-                                                Submit
-                                                <i class="fa fa-send"></i>
-                                            </button>
-                                        </div>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                        </section>
