@@ -15,7 +15,7 @@ $redirect_to = $this->redirect_to;
         <div class="container">
             <div class="row ">
                 <div class="col ">
-                    <h4 class="record-title">Edit Data</h4>
+                    <h4 class="record-title">Add New Kriteria</h4>
                 </div>
             </div>
         </div>
@@ -29,70 +29,32 @@ $redirect_to = $this->redirect_to;
                 <div class="col-md-7 comp-grid">
                     <?php $this :: display_page_errors(); ?>
                     <div  class="bg-light p-3 animated fadeIn page-content">
-                        <form id="hasil-add-form" role="form" novalidate enctype="multipart/form-data" class="form page-form form-horizontal needs-validation" action="<?php print_link("hasil/add?csrf_token=$csrf_token") ?>" method="post">
+                        <form id="kriteria-add-form" role="form" novalidate enctype="multipart/form-data" class="form page-form form-horizontal needs-validation" action="<?php print_link("kriteria/add?csrf_token=$csrf_token") ?>" method="post">
                             <div>
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="id">Id <span class="text-danger">*</span></label>
+                                            <label class="control-label" for="sub_kriteria">Sub Kriteria <span class="text-danger">*</span></label>
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="">
-                                                <input id="ctrl-id"  value="<?php  echo $this->set_field_value('id',""); ?>" type="number" placeholder="Enter Id" step="1"  required="" name="id"  class="form-control " />
+                                                <input id="ctrl-sub_kriteria"  value="<?php  echo $this->set_field_value('sub_kriteria',""); ?>" type="text" placeholder="Enter Sub Kriteria"  required="" name="sub_kriteria"  class="form-control " />
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group ">
-                                        <div class="row">
-                                            <div class="col-sm-4">
-                                                <label class="control-label" for="sub">Sub <span class="text-danger">*</span></label>
-                                            </div>
-                                            <div class="col-sm-8">
-                                                <div class="">
-                                                    <input id="ctrl-sub"  value="<?php  echo $this->set_field_value('sub',""); ?>" type="text" placeholder="Enter Sub"  required="" name="sub"  class="form-control " />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group ">
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <label class="control-label" for="nilai">Nilai <span class="text-danger">*</span></label>
-                                                </div>
-                                                <div class="col-sm-8">
-                                                    <div class="">
-                                                        <input id="ctrl-nilai"  value="<?php  echo $this->set_field_value('nilai',""); ?>" type="text" placeholder="Enter Nilai" list="nilai_list"  required="" name="nilai"  class="form-control " />
-                                                            <datalist id="nilai_list">
-                                                                <?php 
-                                                                $nilai_options = $comp_model -> hasil_nilai_option_list();
-                                                                if(!empty($nilai_options)){
-                                                                foreach($nilai_options as $option){
-                                                                $value = (!empty($option['value']) ? $option['value'] : null);
-                                                                $label = (!empty($option['label']) ? $option['label'] : $value);
-                                                                ?>
-                                                                <option value="<?php echo $value; ?>"><?php echo $label; ?></option>
-                                                                <?php
-                                                                }
-                                                                }
-                                                                ?>
-                                                            </datalist>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group form-submit-btn-holder text-center mt-3">
-                                            <div class="form-ajax-status"></div>
-                                            <button class="btn btn-primary" type="submit">
-                                                Submit
-                                                <i class="fa fa-send"></i>
-                                            </button>
-                                        </div>
-                                    </form>
                                 </div>
-                            </div>
+                                <div class="form-group form-submit-btn-holder text-center mt-3">
+                                    <div class="form-ajax-status"></div>
+                                    <button class="btn btn-primary" type="submit">
+                                        Submit
+                                        <i class="fa fa-send"></i>
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </div>
+    </section>
