@@ -23,16 +23,16 @@ $show_pagination = $this->show_pagination;
         <div class="container-fluid">
             <div class="row ">
                 <div class="col ">
-                    <h4 class="record-title">Tambah Data</h4>
+                    <h4 class="record-title">User</h4>
                 </div>
                 <div class="col-sm-3 ">
-                    <a  class="btn btn btn-primary my-1" href="<?php print_link("tambah_data/add") ?>">
+                    <a  class="btn btn btn-primary my-1" href="<?php print_link("user/add") ?>">
                         <i class="fa fa-plus"></i>                              
-                        Tambah Data 
+                        Add New User 
                     </a>
                 </div>
                 <div class="col-sm-4 ">
-                    <form  class="search" action="<?php print_link('tambah_data'); ?>" method="get">
+                    <form  class="search" action="<?php print_link('user'); ?>" method="get">
                         <div class="input-group">
                             <input value="<?php echo get_value('search'); ?>" class="form-control" type="text" name="search"  placeholder="Search" />
                                 <div class="input-group-append">
@@ -54,7 +54,7 @@ $show_pagination = $this->show_pagination;
                                     if(!empty($field_name)){
                                     ?>
                                     <li class="breadcrumb-item">
-                                        <a class="text-decoration-none" href="<?php print_link('tambah_data'); ?>">
+                                        <a class="text-decoration-none" href="<?php print_link('user'); ?>">
                                             <i class="fa fa-angle-left"></i>
                                         </a>
                                     </li>
@@ -71,7 +71,7 @@ $show_pagination = $this->show_pagination;
                                     if(get_value("search")){
                                     ?>
                                     <li class="breadcrumb-item">
-                                        <a class="text-decoration-none" href="<?php print_link('tambah_data'); ?>">
+                                        <a class="text-decoration-none" href="<?php print_link('user'); ?>">
                                             <i class="fa fa-angle-left"></i>
                                         </a>
                                     </li>
@@ -96,13 +96,13 @@ $show_pagination = $this->show_pagination;
         <?php
         }
         ?>
-        <div  class="py-1">
+        <div  class="">
             <div class="container-fluid">
                 <div class="row ">
                     <div class="col-md-12 comp-grid">
                         <?php $this :: display_page_errors(); ?>
                         <div  class=" animated fadeIn page-content">
-                            <div id="tambah_data-list-records">
+                            <div id="user-list-records">
                                 <div id="page-report-body" class="table-responsive">
                                     <table class="table  table-striped table-sm text-left">
                                         <thead class="table-header bg-light">
@@ -114,10 +114,11 @@ $show_pagination = $this->show_pagination;
                                                     </label>
                                                 </th>
                                                 <th class="td-sno">#</th>
-                                                <th  class="td-no"> ID</th>
-                                                <th  class="td-no_kk"> No Kk</th>
-                                                <th  class="td-nama"> Nama</th>
-                                                <th  class="td-total_nilai"> Total Nilai</th>
+                                                <th  class="td-id_user"> User</th>
+                                                <th  class="td-username"> Username</th>
+                                                <th  class="td-nama_pengguna"> Nama Pengguna</th>
+                                                <th  class="td-email"> Email</th>
+                                                <th  class="td-photo"> Photo</th>
                                                 <th class="td-btn"></th>
                                             </tr>
                                         </thead>
@@ -129,71 +130,58 @@ $show_pagination = $this->show_pagination;
                                             <?php
                                             $counter = 0;
                                             foreach($records as $data){
-                                            $rec_id = (!empty($data['no']) ? urlencode($data['no']) : null);
+                                            $rec_id = (!empty($data['id_user']) ? urlencode($data['id_user']) : null);
                                             $counter++;
                                             ?>
                                             <tr>
                                                 <th class=" td-checkbox">
                                                     <label class="custom-control custom-checkbox custom-control-inline">
-                                                        <input class="optioncheck custom-control-input" name="optioncheck[]" value="<?php echo $data['no'] ?>" type="checkbox" />
+                                                        <input class="optioncheck custom-control-input" name="optioncheck[]" value="<?php echo $data['id_user'] ?>" type="checkbox" />
                                                             <span class="custom-control-label"></span>
                                                         </label>
                                                     </th>
                                                     <th class="td-sno"><?php echo $counter; ?></th>
-                                                    <td class="td-no"> <?php echo $data['no']; ?></td>
-                                                    <td class="td-no_kk">
-                                                        <span  data-value="<?php echo $data['no_kk']; ?>" 
-                                                            data-pk="<?php echo $data['no'] ?>" 
-                                                            data-url="<?php print_link("tambah_data/editfield/" . urlencode($data['no'])); ?>" 
-                                                            data-name="no_kk" 
-                                                            data-title="Enter No Kk" 
+                                                    <td class="td-id_user"> <?php echo $data['id_user']; ?></td>
+                                                    <td class="td-username">
+                                                        <span  data-value="<?php echo $data['username']; ?>" 
+                                                            data-pk="<?php echo $data['id_user'] ?>" 
+                                                            data-url="<?php print_link("user/editfield/" . urlencode($data['id_user'])); ?>" 
+                                                            data-name="username" 
+                                                            data-title="Enter Username" 
                                                             data-placement="left" 
                                                             data-toggle="click" 
                                                             data-type="text" 
                                                             data-mode="popover" 
                                                             data-showbuttons="left" 
                                                             class="is-editable" >
-                                                            <?php echo $data['no_kk']; ?> 
+                                                            <?php echo $data['username']; ?> 
                                                         </span>
                                                     </td>
-                                                    <td class="td-nama">
-                                                        <span  data-value="<?php echo $data['nama']; ?>" 
-                                                            data-pk="<?php echo $data['no'] ?>" 
-                                                            data-url="<?php print_link("tambah_data/editfield/" . urlencode($data['no'])); ?>" 
-                                                            data-name="nama" 
-                                                            data-title="Enter Nama" 
+                                                    <td class="td-nama_pengguna">
+                                                        <span  data-value="<?php echo $data['nama_pengguna']; ?>" 
+                                                            data-pk="<?php echo $data['id_user'] ?>" 
+                                                            data-url="<?php print_link("user/editfield/" . urlencode($data['id_user'])); ?>" 
+                                                            data-name="nama_pengguna" 
+                                                            data-title="Enter Nama Pengguna" 
                                                             data-placement="left" 
                                                             data-toggle="click" 
                                                             data-type="text" 
                                                             data-mode="popover" 
                                                             data-showbuttons="left" 
                                                             class="is-editable" >
-                                                            <?php echo $data['nama']; ?> 
+                                                            <?php echo $data['nama_pengguna']; ?> 
                                                         </span>
                                                     </td>
-                                                    <td class="td-total_nilai">
-                                                        <span  data-value="<?php echo $data['total_nilai']; ?>" 
-                                                            data-pk="<?php echo $data['no'] ?>" 
-                                                            data-url="<?php print_link("tambah_data/editfield/" . urlencode($data['no'])); ?>" 
-                                                            data-name="total_nilai" 
-                                                            data-title="Enter Total Nilai" 
-                                                            data-placement="left" 
-                                                            data-toggle="click" 
-                                                            data-type="text" 
-                                                            data-mode="popover" 
-                                                            data-showbuttons="left" 
-                                                            class="is-editable" >
-                                                            <?php echo $data['total_nilai']; ?> 
-                                                        </span>
-                                                    </td>
+                                                    <td class="td-email"><a href="<?php print_link("mailto:$data[email]") ?>"><?php echo $data['email']; ?></a></td>
+                                                    <td class="td-photo"><?php Html :: page_img($data['photo'],50,50,1); ?></td>
                                                     <th class="td-btn">
-                                                        <a class="btn btn-sm btn-success has-tooltip" title="View Record" href="<?php print_link("tambah_data/view/$rec_id"); ?>">
+                                                        <a class="btn btn-sm btn-success has-tooltip" title="View Record" href="<?php print_link("user/view/$rec_id"); ?>">
                                                             <i class="fa fa-eye"></i> View
                                                         </a>
-                                                        <a class="btn btn-sm btn-info has-tooltip" title="Edit This Record" href="<?php print_link("tambah_data/edit/$rec_id"); ?>">
+                                                        <a class="btn btn-sm btn-info has-tooltip" title="Edit This Record" href="<?php print_link("user/edit/$rec_id"); ?>">
                                                             <i class="fa fa-edit"></i> Edit
                                                         </a>
-                                                        <a class="btn btn-sm btn-danger has-tooltip record-delete-btn" title="Delete this record" href="<?php print_link("tambah_data/delete/$rec_id/?csrf_token=$csrf_token&redirect=$current_page"); ?>" data-prompt-msg="Are you sure you want to delete this record?" data-display-style="modal">
+                                                        <a class="btn btn-sm btn-danger has-tooltip record-delete-btn" title="Delete this record" href="<?php print_link("user/delete/$rec_id/?csrf_token=$csrf_token&redirect=$current_page"); ?>" data-prompt-msg="Are you sure you want to delete this record?" data-display-style="modal">
                                                             <i class="fa fa-times"></i>
                                                             Delete
                                                         </a>
@@ -226,7 +214,7 @@ $show_pagination = $this->show_pagination;
                                         <div class="row justify-content-center">    
                                             <div class="col-md-auto justify-content-center">    
                                                 <div class="p-3 d-flex justify-content-between">    
-                                                    <button data-prompt-msg="Are you sure you want to delete these records?" data-display-style="modal" data-url="<?php print_link("tambah_data/delete/{sel_ids}/?csrf_token=$csrf_token&redirect=$current_page"); ?>" class="btn btn-sm btn-danger btn-delete-selected d-none">
+                                                    <button data-prompt-msg="Are you sure you want to delete these records?" data-display-style="modal" data-url="<?php print_link("user/delete/{sel_ids}/?csrf_token=$csrf_token&redirect=$current_page"); ?>" class="btn btn-sm btn-danger btn-delete-selected d-none">
                                                         <i class="fa fa-times"></i> Delete Selected
                                                     </button>
                                                     <div class="dropup export-btn-holder mx-1">

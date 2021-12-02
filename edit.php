@@ -18,7 +18,7 @@ $redirect_to = $this->redirect_to;
         <div class="container">
             <div class="row ">
                 <div class="col ">
-                    <h4 class="record-title">Edit  Tambah Data</h4>
+                    <h4 class="record-title">Edit  User</h4>
                 </div>
             </div>
         </div>
@@ -32,16 +32,17 @@ $redirect_to = $this->redirect_to;
                 <div class="col-md-7 comp-grid">
                     <?php $this :: display_page_errors(); ?>
                     <div  class="bg-light p-3 animated fadeIn page-content">
-                        <form novalidate  id="" role="form" enctype="multipart/form-data"  class="form page-form form-horizontal needs-validation" action="<?php print_link("tambah_data/edit/$page_id/?csrf_token=$csrf_token"); ?>" method="post">
+                        <form novalidate  id="" role="form" enctype="multipart/form-data"  class="form page-form form-horizontal needs-validation" action="<?php print_link("user/edit/$page_id/?csrf_token=$csrf_token"); ?>" method="post">
                             <div>
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="no_kk">No Kk <span class="text-danger">*</span></label>
+                                            <label class="control-label" for="username">Username <span class="text-danger">*</span></label>
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="">
-                                                <input id="ctrl-no_kk"  value="<?php  echo $data['no_kk']; ?>" type="text" placeholder="Enter No Kk"  required="" name="no_kk"  class="form-control " />
+                                                <input id="ctrl-username"  value="<?php  echo $data['username']; ?>" type="text" placeholder="Enter Username"  required="" name="username"  data-url="api/json/user_username_value_exist/" data-loading-msg="Checking availability ..." data-available-msg="Available" data-unavailable-msg="Not available" class="form-control  ctrl-check-duplicate" />
+                                                    <div class="check-status"></div> 
                                                 </div>
                                             </div>
                                         </div>
@@ -49,11 +50,11 @@ $redirect_to = $this->redirect_to;
                                     <div class="form-group ">
                                         <div class="row">
                                             <div class="col-sm-4">
-                                                <label class="control-label" for="nama">Nama <span class="text-danger">*</span></label>
+                                                <label class="control-label" for="nama_pengguna">Nama Pengguna <span class="text-danger">*</span></label>
                                             </div>
                                             <div class="col-sm-8">
                                                 <div class="">
-                                                    <input id="ctrl-nama"  value="<?php  echo $data['nama']; ?>" type="text" placeholder="Enter Nama"  required="" name="nama"  class="form-control " />
+                                                    <input id="ctrl-nama_pengguna"  value="<?php  echo $data['nama_pengguna']; ?>" type="text" placeholder="Enter Nama Pengguna"  required="" name="nama_pengguna"  class="form-control " />
                                                     </div>
                                                 </div>
                                             </div>
@@ -61,12 +62,17 @@ $redirect_to = $this->redirect_to;
                                         <div class="form-group ">
                                             <div class="row">
                                                 <div class="col-sm-4">
-                                                    <label class="control-label" for="total_nilai">Total Nilai <span class="text-danger">*</span></label>
+                                                    <label class="control-label" for="photo">Photo <span class="text-danger">*</span></label>
                                                 </div>
                                                 <div class="col-sm-8">
                                                     <div class="">
-                                                        <input id="ctrl-total_nilai"  value="<?php  echo $data['total_nilai']; ?>" type="text" placeholder="Enter Total Nilai"  required="" name="total_nilai"  class="form-control " />
+                                                        <div class="dropzone required" input="#ctrl-photo" fieldname="photo"    data-multiple="false" dropmsg="Choose files or drag and drop files to upload"    btntext="Browse" extensions=".jpg,.png,.gif,.jpeg" filesize="3" maximum="1">
+                                                            <input name="photo" id="ctrl-photo" required="" class="dropzone-input form-control" value="<?php  echo $data['photo']; ?>" type="text"  />
+                                                                <!--<div class="invalid-feedback animated bounceIn text-center">Please a choose file</div>-->
+                                                                <div class="dz-file-limit animated bounceIn text-center text-danger"></div>
+                                                            </div>
                                                         </div>
+                                                        <?php Html :: uploaded_files_list($data['photo'], '#ctrl-photo'); ?>
                                                     </div>
                                                 </div>
                                             </div>
