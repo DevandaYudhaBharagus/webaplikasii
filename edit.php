@@ -18,7 +18,7 @@ $redirect_to = $this->redirect_to;
         <div class="container">
             <div class="row ">
                 <div class="col ">
-                    <h4 class="record-title">Edit  Menu</h4>
+                    <h4 class="record-title">Edit  Penilaian</h4>
                 </div>
             </div>
         </div>
@@ -32,16 +32,16 @@ $redirect_to = $this->redirect_to;
                 <div class="col-md-7 comp-grid">
                     <?php $this :: display_page_errors(); ?>
                     <div  class="bg-light p-3 animated fadeIn page-content">
-                        <form novalidate  id="" role="form" enctype="multipart/form-data"  class="form page-form form-horizontal needs-validation" action="<?php print_link("menu/edit/$page_id/?csrf_token=$csrf_token"); ?>" method="post">
+                        <form novalidate  id="" role="form" enctype="multipart/form-data"  class="form page-form form-horizontal needs-validation" action="<?php print_link("penilaian/edit/$page_id/?csrf_token=$csrf_token"); ?>" method="post">
                             <div>
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="no">No <span class="text-danger">*</span></label>
+                                            <label class="control-label" for="no_kk">No Kk <span class="text-danger">*</span></label>
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="">
-                                                <input id="ctrl-no"  value="<?php  echo $data['no']; ?>" type="number" placeholder="Enter No" step="1"  required="" name="no"  class="form-control " />
+                                                <input id="ctrl-no_kk"  value="<?php  echo $data['no_kk']; ?>" type="text" placeholder="Enter No Kk"  required="" name="no_kk"  class="form-control " />
                                                 </div>
                                             </div>
                                         </div>
@@ -49,11 +49,11 @@ $redirect_to = $this->redirect_to;
                                     <div class="form-group ">
                                         <div class="row">
                                             <div class="col-sm-4">
-                                                <label class="control-label" for="kriteria">Kriteria <span class="text-danger">*</span></label>
+                                                <label class="control-label" for="nama">Nama <span class="text-danger">*</span></label>
                                             </div>
                                             <div class="col-sm-8">
                                                 <div class="">
-                                                    <input id="ctrl-kriteria"  value="<?php  echo $data['kriteria']; ?>" type="text" placeholder="Enter Kriteria"  required="" name="kriteria"  class="form-control " />
+                                                    <input id="ctrl-nama"  value="<?php  echo $data['nama']; ?>" type="text" placeholder="Enter Nama"  required="" name="nama"  class="form-control " />
                                                     </div>
                                                 </div>
                                             </div>
@@ -61,51 +61,27 @@ $redirect_to = $this->redirect_to;
                                         <div class="form-group ">
                                             <div class="row">
                                                 <div class="col-sm-4">
-                                                    <label class="control-label" for="status">Status <span class="text-danger">*</span></label>
+                                                    <label class="control-label" for="nilai">Nilai <span class="text-danger">*</span></label>
                                                 </div>
                                                 <div class="col-sm-8">
                                                     <div class="">
-                                                        <input id="ctrl-status"  value="<?php  echo $data['status']; ?>" type="text" placeholder="Enter Status"  required="" name="status"  class="form-control " />
+                                                        <input id="ctrl-nilai"  value="<?php  echo $data['nilai']; ?>" type="text" placeholder="Enter Nilai"  required="" name="nilai"  class="form-control " />
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="form-group ">
-                                                <div class="row">
-                                                    <div class="col-sm-4">
-                                                        <label class="control-label" for="bobot">Bobot <span class="text-danger">*</span></label>
-                                                    </div>
-                                                    <div class="col-sm-8">
-                                                        <div class="">
-                                                            <input id="ctrl-bobot"  value="<?php  echo $data['bobot']; ?>" type="text" placeholder="Enter Bobot"  required="" name="bobot"  class="form-control " />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group ">
-                                                    <div class="row">
-                                                        <div class="col-sm-4">
-                                                            <label class="control-label" for="keterangan">Keterangan <span class="text-danger">*</span></label>
-                                                        </div>
-                                                        <div class="col-sm-8">
-                                                            <div class="">
-                                                                <input id="ctrl-keterangan"  value="<?php  echo $data['keterangan']; ?>" type="text" placeholder="Enter Keterangan"  required="" name="keterangan"  class="form-control " />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-ajax-status"></div>
-                                                <div class="form-group text-center">
-                                                    <button class="btn btn-primary" type="submit">
-                                                        Update
-                                                        <i class="fa fa-send"></i>
-                                                    </button>
-                                                </div>
-                                            </form>
                                         </div>
-                                    </div>
+                                        <div class="form-ajax-status"></div>
+                                        <div class="form-group text-center">
+                                            <button class="btn btn-primary" type="submit">
+                                                Update
+                                                <i class="fa fa-send"></i>
+                                            </button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    </div>
+                </div>
+            </section>
