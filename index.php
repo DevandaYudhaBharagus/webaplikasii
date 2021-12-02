@@ -1,71 +1,108 @@
-        <?php 
-        $page_id = null;
-        $comp_model = new SharedController;
-        ?>
-        <div  class=" py-5">
-            <div class="container">
-                <div class="row ">
-                    <div class="col-md-8 comp-grid">
-                        <div class="">
-                            <div class="fadeIn animated mb-4">
-                                <div class="text-capitalize">
-                                    <h2 class="text-capitalize">Welcome To <?php echo SITE_NAME ?></h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 comp-grid">
-                        <?php $this :: display_page_errors(); ?>
-                        
-                        <div  class="bg-light p-3 animated fadeIn page-content">
-                            <div>
-                                <h4><i class="fa fa-key"></i> User Login</h4>
-                                <hr />
-                                <?php 
-                                $this :: display_page_errors(); 
-                                ?>
-                                <form name="loginForm" action="<?php print_link('index/login/?csrf_token=' . Csrf::$token); ?>" class="needs-validation form page-form" method="post">
-                                    <div class="input-group form-group">
-                                        <input placeholder="Username Or Email" name="username"  required="required" class="form-control" type="text"  />
-                                        <div class="input-group-append">
-                                            <span class="input-group-text"><i class="form-control-feedback fa fa-user"></i></span>
-                                        </div>
-                                    </div>
-                                    <div class="input-group form-group">
-                                        <input  placeholder="Password" required="required" v-model="user.password" name="password" class="form-control " type="password" />
-                                        <div class="input-group-append">
-                                            <span class="input-group-text"><i class="form-control-feedback fa fa-key"></i></span>
-                                        </div>
-                                    </div>
-                                    <div class="row clearfix mt-3 mb-3">
-                                        <div class="col-6">
-                                            <label class="">
-                                                <input value="true" type="checkbox" name="rememberme" />
-                                                Remember Me
-                                            </label>
-                                        </div>
-                                        <div class="col-6">
-                                            <a href="<?php print_link('passwordmanager') ?>" class="text-danger"> Reset Password?</a>
-                                        </div>
-                                    </div>
-                                    <div class="form-group text-center">
-                                        <button class="btn btn-primary btn-block btn-md" type="submit"> 
-                                            <i class="load-indicator">
-                                                <clip-loader :loading="loading" color="#fff" size="20px"></clip-loader> 
-                                            </i>
-                                            Login <i class="fa fa-key"></i>
-                                        </button>
-                                    </div>
-                                    <hr />
-                                    <div class="text-center">
-                                        Don't Have an Account? <a href="<?php print_link("index/register") ?>" class="btn btn-success">Register
-                                        <i class="fa fa-user"></i></a>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
+<?php
+	session_start(); // Start or Resume Session
+	
+	require('config.php');
+	
+	//composer auto load libraries
+	require ('vendor/autoload.php');
+
+	//Error reporting for debugging during development
+	if(DEVELOPMENT_MODE == true){
+		ini_set('display_errors', 1);
+		ini_set('display_startup_errors', 1);
+		error_reporting(E_ALL); 
+	} 
+	else {
+		//errors will not be displayed on the pages but log to files
+		error_reporting(E_ALL);
+		ini_set('log_errors', 'On');
+		ini_set('error_log', 'error.log');
+		ini_set('display_errors','Off');
+	}
+	//
+	if(!empty(DEFAULT_TIMEZONE)){
+		date_default_timezone_set(DEFAULT_TIMEZONE);
+	}
+	
+	// Application configurations Settings
+
+	/**
+     * Initialize Model Class From Model Dir
+     * @return null
+     */
+	function autoloadModel($className) {
+		$filename = MODELS_DIR . $className . ".php";
+		if (is_readable($filename)) {
+			require $filename;
+		}
+	}
+
+	/**
+     * Initialize Controller Classes From Controller Dir
+     * @return null
+     */
+	function autoloadController($className) {
+		$filename = CONTROLLERS_DIR . $className . ".php";
+		if (is_readable($filename)) {
+			require $filename;
+		}
+	}
+	
+	/**
+     * Initialize Libraries Classes From Libs Dir
+     * @return boolean
+     */
+	function autoloadLibrary($className) {
+		$filename = LIBS_DIR . $className . ".php";
+		if (is_readable($filename)) {
+			require $filename;
+		}
+	}
+	
+	/**
+     * Initialize Helper Classes From helper Dir
+     * @return null
+     */
+	function autoloadHelper($className) {
+		$filename = HELPERS_DIR . $className . ".php";
+		if (is_readable($filename)) {
+			require $filename;
+		}
+	}
+	
+	// Register Autoloaders
+	spl_autoload_register("autoloadModel");
+	spl_autoload_register("autoloadController");
+	spl_autoload_register("autoloadLibrary");
+	spl_autoload_register("autoloadHelper");
+	
+	
+	
+	//Initialize Global Functions Helpers
+	require(HELPERS_DIR . 'Functions.php');
+
+	$lang = new Lang;// Initialize language class and load default language phrases
+	$csrf = new Csrf;// Initialize Csrf class and generate new application token
+	$csrf_token = $csrf::$token; 
+	
+
+	// Application Core Files
+	require(SYSTEM_DIR . 'BaseController.php');
+	require(SYSTEM_DIR . 'SecureController.php');
+	require(SYSTEM_DIR . 'BaseView.php');
+	require(SYSTEM_DIR . 'Router.php');
+	
+	//display page with the exceptions
+	function exception_handler($exception){
+		$view = new BaseView();
+		$view->render("errors/error_server.php", $exception, "info_layout.php");
+		exit;
+	}
+
+	//Display application exception in a custom page
+	set_exception_handler('exception_handler');
+
+	$page = new Router;
+	$page->init(); // Bootstrap Page with the Current URL
+	
+	
